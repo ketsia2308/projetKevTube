@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react'
 import { gapi, loadAuth2 } from 'gapi-script'
 import { useNavigate } from 'react-router-dom'
+import { clientId } from '../config'
 const Login = () => {
-  const clientId = '422670866849-13bacjlhtmgpmuuhm0s0rj6ga4s7qj0f.apps.googleusercontent.com'
 const navigate = useNavigate()
 useEffect(() => {
   const setAuth2 = async () => {
-    const auth2 = await loadAuth2(gapi, clientId, 'https://www.googleapis.com/auth/youtube.force-ssl')
+    const auth2 = await loadAuth2(gapi, clientId, 'https://www.googleapis.com/auth/youtube')
     if (auth2.isSignedIn.get()) {
         updateUser(auth2.currentUser.get())
     } else {

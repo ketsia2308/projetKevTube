@@ -6,8 +6,8 @@ import { Outlet } from 'react-router-dom'
 export default function Authentification() {
   return (
     <div className='flex'>
-      <AuthentificationHome/>
-      <Formulaire className='ml-300px'/>
+      <AuthentificationHome />
+      <Formulaire className='ml-300px' />
       <Outlet />
     </div>
   )
