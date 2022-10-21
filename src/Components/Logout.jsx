@@ -25,7 +25,9 @@ const Logout = () => {
   }
   return (
     <>
-      <div id="btn-logout" onClick={signOut}>Sign out with Google</div>
+      <div> 
+        <button id="btn-logout" onClick={signOut}>Sign out </button>
+      </div>
     </>
   )
 }

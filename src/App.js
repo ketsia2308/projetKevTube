@@ -14,19 +14,23 @@ import Login from './Components/Login';
 import Logout from './Components/Logout';
 import { useState, createContext } from 'react';
 import appContext from './context';
+import ChannelVideoList from './Components/ChannelVideoList';
 
 function App() {
   const [user, setUser] = useState(null)
   const [accessToken, setAccessToken]  = useState('');
   const [playId,setPlayId] = useState('');
+  const [searchResult, setSearchResult] = useState([])
   return (
-    <appContext.Provider value={{user, setUser, accessToken, setAccessToken,playId, setPlayId }} >
+    <appContext.Provider value={{user, setUser, accessToken, setAccessToken,playId, setPlayId, searchResult, setSearchResult }} >
     <div className="App">
-      <Logout />
 
       <Routes>
         <Route path='/' element={<Authentification />} />
-        <Route path='/home' element={<Videoplayer />} />
+        <Route path='/home' element={<Videoplayer />} >
+          <Route path='' element={<CardList />} />
+          <Route path='channel/:id' element={<ChannelVideoList />} />
+        </Route>
       </Routes>
 
     </div>

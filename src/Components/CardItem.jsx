@@ -11,11 +11,12 @@ export default function CardItem({ videoId,image,title,channel}) {
   const { playId, setPlayId } = useContext(appContext)
   const videoClicked = (e) => {
       setPlayId(videoId);
+      window.scrollTo(0, 0);
   }
   return (
     <div onClick={videoClicked} className='mb-5'>
             <div className='w-[160px]'>
-                <img src={image} alt='Fally'/>
+                <img src={image} className="w-full" alt='Fally'/>
                <div className='flex justify-between'>
                  <h1 className='text-black text-sm'><strong>{title}</strong><br/>{channel}</h1>
                 </div>

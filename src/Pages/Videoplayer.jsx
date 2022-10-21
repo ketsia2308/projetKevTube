@@ -6,7 +6,7 @@ import SideBar from '../Components/SideBar'
 import Video from '../Components/Video'
 import { gapi, loadAuth2 } from 'gapi-script'
 import appContext from '../context'
-import { useNavigate } from 'react-router-dom'
+import { Outlet, useNavigate } from 'react-router-dom'
 import { clientId } from '../config'
 
 export default function Videoplayer() {
@@ -29,15 +29,15 @@ export default function Videoplayer() {
   }, []);
 
   return (
-    <div className='flex'>
-       <div className='w-[500px]'>
-         <SideBar/>
-       </div> 
-       <div className='ml-[100px]'>
-       <SearchBar/>
-         <Video/>
-         <CardList/>
-       </div>
-    </div>
+       <div className='flex justify-between'>
+           <div className='w-[20%]'>
+             <SideBar/>
+           </div> 
+           <div className='w-[75%] flex items-center  flex-col '>
+             <SearchBar/>
+             <Video/>
+            <Outlet/>
+           </div>
+      </div>
   )
 }
