@@ -12,7 +12,7 @@ export default function Channel() {
     const fetchChannels = async () => {
       console.log(accessToken);
       const result = await axios.get(
-        `https://youtube.googleapis.com/youtube/v3/subscriptions?part=snippet%2CcontentDetails&maxResults=34&mine=true&key=${apiKey}`,
+        `https://youtube.googleapis.com/youtube/v3/subscriptions?part=snippet%2CcontentDetails&maxResults=25&mine=true&key=${apiKey}`,
         { headers: { Authorization: `Bearer ${accessToken}` } }
       );
       console.log(result.data);

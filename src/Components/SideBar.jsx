@@ -12,7 +12,7 @@ export default function SideBar() {
   const { user } = useContext(appContext);
 
   return (
-    <div className="w-[350px] h-[2600px] bg-[#60A5FA] rounded-r-2xl">
+    <div className="w-[350px] h-[100vh] overflow-y-scroll scrollbar-none bg-[#60A5FA] rounded-r-2xl fixed">
       <div className="px-[22px] py-4">
         <div className="flex items-center justify-between z-50">
           <Link path="/home">
