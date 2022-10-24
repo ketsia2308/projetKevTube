@@ -7,12 +7,23 @@ import "reactjs-popup/dist/index.css";
 import Logout from "./Logout";
 import Channel from "./Channel";
 import { Link } from "react-router-dom";
+import { MdMenu } from 'react-icons/md';
 
 export default function SideBar() {
   const { user } = useContext(appContext);
 
   return (
-    <div className="w-[350px] h-[100vh] overflow-y-scroll scrollbar-none bg-[#60A5FA] rounded-r-2xl fixed">
+// Navbar Mobile
+
+<>
+{/* <div className="w-full h-[60px] bg-black ">
+    <MdMenu className="text-white"/>
+    <Link path="/home">
+            {" "}
+            <img src={logo2} alt="Logo" className="w-[150px] h-[40px]" />
+    </Link>
+</div> */}
+<div className="w-[350px] h-[100vh] overflow-y-scroll scrollbar-none bg-[#60A5FA] rounded-r-2xl fixed">
       <div className="px-[22px] py-4">
         <div className="flex items-center justify-between z-50">
           <Link path="/home">
@@ -47,5 +58,6 @@ export default function SideBar() {
       </h1>
       <Channel />
     </div>
+</>
   );
 }

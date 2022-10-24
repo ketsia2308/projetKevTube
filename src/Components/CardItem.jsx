@@ -1,10 +1,4 @@
 import React, {useContext} from 'react'
-import Fally from '../../src/Assets/Fally.jpeg'
-import Ima from '../../src/Assets/Ima (copie).jpg'
-import KoffiOlomode from '../../src/Assets/KoffiOlomide.jpg.jpg'
-import fally from '../../src/Assets/Droit chemin (copie).jpg'
-import Dadju from '../../src/Assets/Dadju.jpg'
-import Kwadra from '../../src/Assets/kwadrakora.jpg'
 import appContext from '../context'
 
 export default function CardItem({ videoId,image,title,channel}) {
@@ -14,7 +8,7 @@ export default function CardItem({ videoId,image,title,channel}) {
       window.scrollTo(0, 0);
   }
   return (
-    <div onClick={videoClicked} className='mb-5'>
+    <div onClick={videoClicked} className='mb-5 transform transition duration-200 hover:scale-110 cursor-pointer'>
             <div className='w-[160px]'>
                 <img src={image} className="w-full" alt='Fally'/>
                <div className='flex justify-between'>
