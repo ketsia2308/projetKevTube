@@ -7,7 +7,6 @@ import "reactjs-popup/dist/index.css";
 import Logout from "./Logout";
 import Channel from "./Channel";
 import { Link } from "react-router-dom";
-import { MdMenu } from 'react-icons/md';
 
 export default function SideBar() {
   const { user } = useContext(appContext);
