@@ -13,12 +13,12 @@ export default function Video() {
   return (
     <>
       {playId && (
-        <div className="rounded-2xl relative my-[30px] w-[80%] h-[300px]">
+        <div className="rounded-2xl relative mt-[30px] w-[90%] lg:w-[80%] h-[300px]">
           <YouTube
             videoId={playId}
             opts={opts}
             alt="Balmain"
-            className="w-[100%] h-[300px]"
+            className="w-[100%] lg:h-[300px]"
           />
         </div>
       )}

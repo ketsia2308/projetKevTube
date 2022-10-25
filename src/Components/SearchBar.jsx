@@ -18,12 +18,12 @@ export default function SearchBar() {
 
   return (
     <form onSubmit={searchSubmitted} className="w-full p-0 m-0">
-      <div className="mt-[30px] w-[80%] mx-[10%]">
+      <div className="mt-[30px] w-[90%] lg:w-[80%] lg:mx-[10%] mx-[5%]">
         <input
           type="text"
           value={searchText}
           onChange={(e) => setSearchText(e.target.value)}
-          className="w-full border border-black px-10 py-1.5 text-sm font-light placeholder-gray-500"
+          className=" w-full border border-black px-10 py-1.5 text-sm font-light placeholder-gray-500"
           placeholder="Recherche"
         />
       </div>

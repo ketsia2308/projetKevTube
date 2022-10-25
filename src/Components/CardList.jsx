@@ -3,10 +3,12 @@ import CardItem from "./CardItem";
 import appContext from "../context";
 import { clientId, apiKey } from "../config";
 import axios from "axios";
+import { ClipLoader } from "react-spinners";
 
 export default function CardList() {
   const { accessToken, searchResult } = useContext(appContext);
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -17,6 +19,7 @@ export default function CardList() {
       );
       console.log(result.data);
       setData(result.data.items);
+      setLoading(false);
     };
     fetchData();
   }, [accessToken]);
@@ -24,6 +27,12 @@ export default function CardList() {
   return (
     <div className="w-[80%] pt-[130px] flex justify-center h-[240px]">
       <div className="flex justify-between flex-wrap">
+        <ClipLoader
+          color="gray"
+          loading={loading}
+          size={150}
+          aria-label="Chargement..."
+        />
         {searchResult.length > 0 &&
           searchResult.map((item) => (
             <CardItem
