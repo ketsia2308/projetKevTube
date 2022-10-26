@@ -8,7 +8,7 @@ import CardItem from "./CardItem";
 
 export default function ChannelVideoList(){
 
-    const { accessToken, searchResult } = useContext(appContext);
+    const { accessToken, searchResult, playId} = useContext(appContext);
     const [data, setData] = useState([]);  
     const {id} = useParams();
 
@@ -28,7 +28,7 @@ export default function ChannelVideoList(){
 
     return(
         <>
-        <div className="w-[80%] pt-[130px] flex justify-center h-[240px]">
+        <div className={`w-[80%] ${playId ? "pt-[130px]":"pt-[30px]"} flex justify-center h-[240px]`}>
       <div className="flex justify-between flex-wrap">
         {searchResult.length > 0 &&
           searchResult.map((item) => (
