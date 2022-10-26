@@ -20,7 +20,6 @@ export default function SideBar({ openSideBar, setOpenSideBar}) {
   
   return (
     // Navbar Mobile
-
     <>
       <div
         className={`z-[100] w-[75vw] lg:w-[25vw] h-[100vh] overflow-y-scroll scrollbar-none bg-[#60A5FA] lg:rounded-r-2xl fixed transition ease-linear duration-300 transform ${

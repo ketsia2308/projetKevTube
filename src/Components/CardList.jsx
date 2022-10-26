@@ -6,7 +6,7 @@ import axios from "axios";
 import { ClipLoader } from "react-spinners";
 
 export default function CardList() {
-  const { accessToken, searchResult } = useContext(appContext);
+  const { accessToken, searchResult, playId } = useContext(appContext);
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -25,7 +25,7 @@ export default function CardList() {
   }, [accessToken]);
 
   return (
-    <div className="w-[80%] pt-[130px] flex justify-center h-[240px]">
+    <div className={`w-[80%] ${playId ? "pt-[130px]":"pt-[30px]"} flex justify-center h-[240px]`}>
       <div className="flex justify-between flex-wrap">
         <ClipLoader
           color="gray"

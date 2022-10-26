@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useContext, useState } from "react";
 import appContext from "../context";
 import { apiKey } from "../config";
+import { MdSearch } from "react-icons/md";
 
 export default function SearchBar() {
   const [searchText, setSearchText] = useState("");
@@ -18,18 +19,26 @@ export default function SearchBar() {
 
   return (
     <form onSubmit={searchSubmitted} className="w-full p-0 m-0">
-      <div className="mt-[30px] w-[90%] lg:w-[80%] lg:mx-[10%] mx-[5%]">
-        <input
-          type="text"
-          value={searchText}
-          onChange={(e) => setSearchText(e.target.value)}
-          className=" w-full border border-black px-10 py-1.5 text-sm font-light placeholder-gray-500"
-          placeholder="Recherche"
-        />
+      <div className="lg:mt-[30px] mt-[90px] w-[90%] lg:w-[80%] lg:mx-[10%] mx-[5%]">
+        <div className=" border flex items-center ">
+          <button type="submit">
+            <MdSearch className="ml-[10px] text-gray-500" />
+          </button>
+          <input
+            type="text"
+            value={searchText}
+            onChange={(e) => setSearchText(e.target.value)}
+            className=" w-full px-3 py-1.5 text-sm font-light placeholder-gray-500"
+            placeholder="Recherche"
+          />
+        </div>
       </div>
       {searchResult.length > 0 && (
         <div className="mt-[30px] w-[80%] mx-[10%]">
-          <button onClick={() => setSearchResult([])} className="bg-sky-500 px-4 py-2 text-white">
+          <button
+            onClick={() => setSearchResult([])}
+            className="bg-sky-500 px-4 py-2 text-white"
+          >
             Annuler la recherche
           </button>
         </div>

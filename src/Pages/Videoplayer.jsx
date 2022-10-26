@@ -38,7 +38,7 @@ export default function Videoplayer() {
 
   return (
     <>
-      <div className="w-full h-[60px] bg-white flex flex-row justify-between px-3 pt-2 lg:hidden shadow-md">
+      <div className="w-full h-[60px] bg-white flex flex-row justify-between px-3 pt-2 lg:hidden shadow-md fixed z-50">
         <MdMenu
           className="text-black"
           size={40}
@@ -53,7 +53,7 @@ export default function Videoplayer() {
         <div className="lg:w-[20%]">
           <SideBar openSideBar={openSideBar} setOpenSideBar={setOpenSideBar}  />
         </div>
-        <div className="lg:w-[75%] flex items-center  flex-col ">
+        <div className="lg:w-[75%] w-[100%] flex items-center  flex-col ">
           <SearchBar />
           <Video />
           <Outlet />
