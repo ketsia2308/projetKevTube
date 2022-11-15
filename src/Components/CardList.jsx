@@ -1,31 +1,30 @@
 import React, { useState, useEffect, useContext } from "react";
 import CardItem from "./CardItem";
 import appContext from "../context";
-import { clientId, apiKey } from "../config";
+import {  apiKey } from "../config";
 import axios from "axios";
 import { ClipLoader } from "react-spinners";
 
 export default function CardList() {
-  const { accessToken, searchResult } = useContext(appContext);
+  const { accessToken, searchResult, playId, isSearching} = useContext(appContext);
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  const fetchData = async () => {
+    const result = await axios.get(
+      `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails&maxResults=45&myRating=like&key=${apiKey}`,
+      { headers: { Authorization: `Bearer ${accessToken}` } }
+    );
+    setData(result.data.items);
+    setLoading(false);
+  };
+
   useEffect(() => {
-    const fetchData = async () => {
-      console.log(accessToken);
-      const result = await axios.get(
-        `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails&maxResults=45&myRating=like&key=${apiKey}`,
-        { headers: { Authorization: `Bearer ${accessToken}` } }
-      );
-      console.log(result.data);
-      setData(result.data.items);
-      setLoading(false);
-    };
     fetchData();
   }, [accessToken]);
 
   return (
-    <div className="w-[80%] pt-[130px] flex justify-center h-[240px]">
+    <div className={`w-[80%] ${playId ? "pt-[130px]":"pt-[30px]"} flex justify-center h-[240px]`}>
       <div className="flex justify-between flex-wrap">
         <ClipLoader
           color="gray"

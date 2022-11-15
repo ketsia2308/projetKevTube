@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-/* import CardItem from '../Components/CardItem' */
 import CardList from "../Components/CardList";
 import SearchBar from "../Components/SearchBar";
 import SideBar from "../Components/SideBar";
@@ -13,7 +12,6 @@ import logo2 from "../../src/Assets/logo2.png";
 
 export default function Videoplayer() {
   const { setUser, setAccessToken } = useContext(appContext);
-
   const [openSideBar, setOpenSideBar] = useState(false);
 
   const navigate = useNavigate();
@@ -38,7 +36,7 @@ export default function Videoplayer() {
 
   return (
     <>
-      <div className="w-full h-[60px] bg-white flex flex-row justify-between px-3 pt-2 lg:hidden shadow-md">
+      <div className="w-full h-[60px] bg-white flex flex-row justify-between px-3 pt-2 lg:hidden shadow-md fixed z-50">
         <MdMenu
           className="text-black"
           size={40}
@@ -53,7 +51,7 @@ export default function Videoplayer() {
         <div className="lg:w-[20%]">
           <SideBar openSideBar={openSideBar} setOpenSideBar={setOpenSideBar}  />
         </div>
-        <div className="lg:w-[75%] flex items-center  flex-col ">
+        <div className="lg:w-[75%] w-[100%] flex items-center  flex-col ">
           <SearchBar />
           <Video />
           <Outlet />
