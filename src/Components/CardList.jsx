@@ -26,12 +26,12 @@ export default function CardList() {
   return (
     <div className={`w-[80%] ${playId ? "pt-[130px]":"pt-[30px]"} flex justify-center h-[240px]`}>
       <div className="flex justify-between flex-wrap">
-        {/* <ClipLoader
+        <ClipLoader
           color="gray"
-          loading={loading || isSearching}
+          loading={loading}
           size={150}
           aria-label="Chargement..."
-        /> */}
+        />
         {searchResult.length > 0 &&
           searchResult.map((item) => (
             <CardItem
