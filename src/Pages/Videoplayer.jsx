@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-/* import CardItem from '../Components/CardItem' */
 import CardList from "../Components/CardList";
 import SearchBar from "../Components/SearchBar";
 import SideBar from "../Components/SideBar";
@@ -13,7 +12,6 @@ import logo2 from "../../src/Assets/logo2.png";
 
 export default function Videoplayer() {
   const { setUser, setAccessToken } = useContext(appContext);
-
   const [openSideBar, setOpenSideBar] = useState(false);
 
   const navigate = useNavigate();

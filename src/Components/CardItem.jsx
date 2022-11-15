@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import appContext from "../context";
 
 export default function CardItem({ videoId, image, title, channel }) {
-  const { playId, setPlayId } = useContext(appContext);
+  const { setPlayId } = useContext(appContext);
   const videoClicked = (e) => {
     setPlayId(videoId);
     window.scrollTo(0, 0);

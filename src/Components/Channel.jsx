@@ -5,7 +5,7 @@ import axios from "axios";
 import { apiKey } from "../config";
 
 export default function Channel() {
-  const { accessToken } = useContext(appContext);
+  const { accessToken, setPlayId} = useContext(appContext);
   const [channels, setChannels] = useState([]);
 
   useEffect(() => {
@@ -24,8 +24,8 @@ export default function Channel() {
   return (
     <>
       {channels.map((channel, index) => (
-        <Link key={index}  to={`/home/channel/${channel.snippet.resourceId.channelId}`}>
-          <div className="flex items-center pt-2 pb-5 pl-6">
+        <Link onClick={()=>{setPlayId(undefined)}} key={index}  to={`/home/channel/${channel.snippet.resourceId.channelId}`}>
+          <div className="flex items-center pt-2 pb-2 pl-6">
             <img
               src={channel.snippet.thumbnails.default.url}
               alt=""

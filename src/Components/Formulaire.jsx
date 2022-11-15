@@ -4,7 +4,7 @@ import { gapi, loadAuth2 } from 'gapi-script'
 import { useNavigate, Navigate } from 'react-router-dom';
 import appContext from '../context';
 import { clientId } from '../config';
-import Rectangle from '../../src/Assets/Rectangle 19.png'
+import Google from '../../src/Assets/google.png';
 
 export default function Formulaire() {
   const {user, setUser, setAccessToken} = useContext(appContext);
@@ -49,7 +49,7 @@ export default function Formulaire() {
         <div className='flex items-center justify-center mb-4'>
           <img src={logo2} alt='logo' className='h-[80px] lg:w-[300px] lg:h-[100px] pb-2' />
         </div>
-        <button id="started" className='w-full py-2 border border-black px-1 outline-none mb-7 flex flex-row justify-center font-bold'>Connectez vous avec Google <img src={Rectangle} className='w-[40px] ml-4' alt='Google'/></button>
+        <button id="started" className='w-full py-2 border border-black px-1 outline-none mb-7 flex flex-row justify-center items-center font-bold'>Se connecter avec Google <img src={Google} className='w-[40px] ml-4' alt='Google'/></button>
       </div>
     </main>
   )

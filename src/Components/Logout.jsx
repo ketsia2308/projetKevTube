@@ -26,7 +26,7 @@ const Logout = () => {
   return (
     <>
       <div> 
-        <button id="btn-logout" onClick={signOut}>Sign out </button>
+        <button id="btn-logout" onClick={signOut}>Se déconnecter</button>
       </div>
     </>
   )
