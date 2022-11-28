@@ -24,7 +24,7 @@ export default function CardList() {
   }, [accessToken]);
 
   return (
-    <div className={`w-[80%] ${playId ? "pt-[130px]":"pt-[30px]"} flex justify-center h-[240px]`}>
+    <div className={`w-[80%] ${playId ? "pt-[50px]":"pt-[30px]"} flex justify-center h-[240px]`}>
       <div className="flex justify-between flex-wrap">
         <ClipLoader
           color="gray"

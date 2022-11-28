@@ -9,6 +9,7 @@ import { Outlet, useNavigate, Link } from "react-router-dom";
 import { clientId } from "../config";
 import { MdMenu } from "react-icons/md";
 import logo2 from "../../src/Assets/logo2.png";
+import Commentaire from "../Components/Commentaire";
 
 export default function Videoplayer() {
   const { setUser, setAccessToken } = useContext(appContext);
@@ -54,6 +55,7 @@ export default function Videoplayer() {
         <div className="lg:w-[75%] w-[100%] flex items-center  flex-col ">
           <SearchBar />
           <Video />
+          <Commentaire/>
           <Outlet />
         </div>
       </div>

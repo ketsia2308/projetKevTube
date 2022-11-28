@@ -10,7 +10,6 @@ export default function Video() {
   const [loading, setLoading] = useState(true);
   const opts = {
     playerVars: {
-      // https://developers.google.com/youtube/player_parameters
       autoplay: 1,
     },
   };
@@ -19,13 +18,11 @@ export default function Video() {
   };
 
   useEffect(() => {
-    // execute à chaque que playId change
     setLoading(true)
   }, [playId]);
 
   return (
     <>
-     
       {playId && (
         <>
         <ClipLoader
@@ -44,8 +41,7 @@ export default function Video() {
             loading="lazy"
           />
         </div>
-        </>
-        
+        </> 
       )}
     </>
   );
