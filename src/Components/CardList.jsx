@@ -33,8 +33,9 @@ export default function CardList() {
           aria-label="Chargement..."
         />
         {searchResult.length > 0 &&
-          searchResult.map((item) => (
+          searchResult.map((item, index) => (
             <CardItem
+              key={index}
               videoId={item.id.videoId}
               title={item.snippet.title}
               image={item.snippet.thumbnails.default.url}
@@ -42,8 +43,9 @@ export default function CardList() {
             />
           ))}
         {searchResult.length === 0 &&
-          data.map((item) => (
+          data.map((item, index) => (
             <CardItem
+            key={index}
               videoId={item.id}
               title={item.snippet.localized.title}
               image={item.snippet.thumbnails.default.url}

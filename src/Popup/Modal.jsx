@@ -27,6 +27,6 @@ isAffiching
 Modal.propTypes = {
   isAffiching: PropTypes.bool.isRequired,
   hide: PropTypes.func.isRequired,
-  title: PropTypes.string.isRequired,
+  // title: PropTypes.string.isRequired,
 };
 export default Modal;

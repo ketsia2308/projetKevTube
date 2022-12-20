@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { gapi, loadAuth2 } from "gapi-script";
 import { useNavigate } from "react-router-dom";
 import { clientId } from "../config";
+import axios from "axios";
 const Login = () => {
   const navigate = useNavigate();
   useEffect(() => {
@@ -12,13 +13,15 @@ const Login = () => {
         "https://www.googleapis.com/auth/youtube"
       );
       if (auth2.isSignedIn.get()) {
-        updateUser(auth2.currentUser.get());
+        const user = auth2.currentUser.get();
+        updateUser(user);
       } else {
         attachSignin(document.getElementById("started"), auth2);
       }
     };
     setAuth2();
   }, []);
+
   const attachSignin = (element, auth2) => {
     auth2.attachClickHandler(
       element,
@@ -50,3 +53,5 @@ const Login = () => {
   );
 };
 export default Login;
+
+

@@ -18,7 +18,7 @@ export default function Commentaire() {
             className="focus:outline-none"
             type="text"
             placeholder="Ajouter un commentaire"
-            novalidate
+            noValidate
           ></input>
         </div>
         <div>
