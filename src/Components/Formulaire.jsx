@@ -1,7 +1,7 @@
-import React, { useEffect , useContext} from 'react'
+import React, { useEffect , useContext, useState} from 'react'
 import logo2 from '../../src/Assets/logo2.png'
 import { gapi, loadAuth2 } from 'gapi-script'
-import { useNavigate, Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import appContext from '../context';
 import { clientId } from '../config';
 import Google from '../../src/Assets/google.png';
@@ -9,6 +9,7 @@ import axios from 'axios';
 
 export default function Formulaire() {
   const { setUser, setAccessToken} = useContext(appContext);
+  const [logedIn, setLogedIn] = useState(false);
   const navigate = useNavigate()
   useEffect(() => {
     const setAuth2 = async () => {
@@ -29,25 +30,26 @@ export default function Formulaire() {
           method : "POST",
           url: `${process.env.REACT_APP_URL_SERVER}/users/create`,
           data: user.wt
-        }).then((response) => console.log(response))
+        }).then((response) => localStorage.setItem("user", JSON.stringify(response.data)))
           .catch((err) => console.log(err))
-          .finally(() => console.log("terminééééééééééééééééééééééééééééééééééééééé"))
+          .finally(() => console.log("terminéééééé"))
 
-        console.log("ddddddddddddddddd", user.wt)
+        console.log("dddddd", user.wt)
         navigate('/home',{replace: true})
       } else {
         attachSignin(document.getElementById('started'), auth2);
       }
     }
     setAuth2();
-  }, []);
+  }, [logedIn]);
 
   const attachSignin = (element, auth2) => {
     auth2.attachClickHandler(element, {},
-      async   (googleUser) => {
+      async (googleUser) => {
         console.log(googleUser, "User")
         updateUser(googleUser);
         console.log("Connected")
+        setLogedIn(true)
         console.log({user: googleUser});
         const isUser = await fetchUser(auth2.cu)
         console.log({isUser})

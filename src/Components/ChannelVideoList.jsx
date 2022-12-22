@@ -37,7 +37,7 @@ export default function ChannelVideoList() {
       <div
         className={`w-[80%] ${
           playId ? "pt-[130px]" : "pt-[30px]"
-        } flex justify-center h-[240px]`}
+        } flex justify-center h-[240px] ${playId ? "mt-[200px]":"mt-[0px]"}`}
       >
        {!loadingVideosChannel && <div className="flex justify-between flex-wrap">
           {searchResult.length > 0 &&

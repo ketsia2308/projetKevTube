@@ -55,7 +55,6 @@ export default function Videoplayer() {
         <div className="lg:w-[75%] w-[100%] flex items-center  flex-col ">
           <SearchBar />
           <Video />
-          <Commentaire/>
           <Outlet />
         </div>
       </div>
