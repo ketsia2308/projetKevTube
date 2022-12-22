@@ -6,11 +6,9 @@ import { useEffect } from "react";
 import Description from "./DescriptionCommentaire";
 
 export default function Commentaire() {
-  const [inputComment, setInputComment] = useState();
+  const [inputComment, setInputComment] = useState("");
   const { playId } = useContext(appContext);
   const [comments, setComments] = useState([]);
-
-  const test = [1, 2, 3, 4] 
 
   useEffect(() => {
     const fetchData = async () => {
@@ -24,10 +22,13 @@ export default function Commentaire() {
     fetchData();
   }, [playId]);
 
+  console.log(comments);
+
   const comment = (e) => {
     e.preventDefault();
+    const currentUser = JSON.parse(localStorage.getItem("user"));
     const data = {
-      user_id: JSON.parse(localStorage.getItem("user"))._id,
+      user_id: currentUser._id,
       video_id: playId,
       description: inputComment,
     };
@@ -37,7 +38,14 @@ export default function Commentaire() {
       url: `${process.env.REACT_APP_URL_SERVER}/comments/create`,
       data: data,
     })
-      .then((response) => console.log(response.data))
+      .then((response) => {
+        console.log(response.data);
+        setComments((current) => [...current, {
+          ...response.data,
+          user_id: currentUser
+        }]);
+        setInputComment("");
+      })
       .catch((err) => console.log(err))
       .finally(() => console.log("terminéééééé"));
   };
@@ -54,6 +62,7 @@ export default function Commentaire() {
             className="w-[40px] object-cover h-[40px] rounded-full"
           />
           <input
+            value={inputComment}
             onChange={(e) => setInputComment(e.target.value)}
             className="focus:outline-none"
             type="text"
@@ -73,7 +82,14 @@ export default function Commentaire() {
       </form>
       {/* <Description/> */}
       {comments.map((item, index) => {
-       return <Description description={item.description} />
+        return (
+          <Description
+            description={item.description}
+            profile={item.user_id.profile}
+            first_name={item.user_id.first_name}
+            last_name={item.user_id.last_name}
+          />
+        );
       })}
     </>
   );
