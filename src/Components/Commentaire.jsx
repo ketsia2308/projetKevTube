@@ -94,6 +94,7 @@ export default function Commentaire() {
             first_name={item.user_id.first_name}
             last_name={item.user_id.last_name}
             likes={item.likes.length}
+            dislikes={item.dislikes.length}
           />
         );
       })}

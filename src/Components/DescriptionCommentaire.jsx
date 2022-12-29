@@ -3,8 +3,8 @@ import React from "react";
 import { useState } from "react";
 import {
   AiOutlineLike,
-  // AiOutlineDislike,
-  AiFillLike,
+  AiOutlineDislike,
+  // AiFillLike,
   // AiFillDislike,
 } from "react-icons/ai";
 
@@ -15,6 +15,7 @@ export default function Description({
   first_name,
   last_name,
   likes,
+  dislikes,
 }) {
   const [likesCount, setLikesCount] = useState(likes);
   const like = async () => {
@@ -34,6 +35,29 @@ export default function Description({
     })
       .then((res) => {
         setLikesCount((current) => current + 1);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const [dislikesCount, setDislikesCount] = useState(dislikes);
+  const dislike = async () => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    const user_id = user._id;
+    console.log(user_id, comment_id);
+
+    const data = {
+      user_id,
+      comment_id,
+    };
+    const url = `${process.env.REACT_APP_URL_SERVER}/comments/dislike`
+    console.log(url);
+    axios({
+      method: "PUT",
+      url: url,
+      data: data,
+    })
+      .then((res) => {
+        setDislikesCount((current) => current + 1);
       })
       .catch((err) => console.log(err));
   };
@@ -63,11 +87,10 @@ export default function Description({
           <div className="flex gap-1">
             <AiOutlineLike onClick={like} />
             {likesCount}
-            {/* <AiOutlineDislike /> */}
           </div>
           <div className="flex gap-1">
-            <AiFillLike />
-            {/* <AiFillDislike /> */}
+            <AiOutlineDislike onClick={dislike} />
+            {dislikesCount}
           </div>
         </div>
       </div>
