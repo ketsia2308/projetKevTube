@@ -40,10 +40,13 @@ export default function Commentaire() {
     })
       .then((response) => {
         console.log(response.data);
-        setComments((current) => [...current, {
-          ...response.data,
-          user_id: currentUser
-        }]);
+        setComments((current) => [
+          ...current,
+          {
+            ...response.data,
+            user_id: currentUser,
+          },
+        ]);
         setInputComment("");
       })
       .catch((err) => console.log(err))
@@ -82,12 +85,15 @@ export default function Commentaire() {
       </form>
       {/* <Description/> */}
       {comments.map((item, index) => {
+        console.log(item.likes);
         return (
           <Description
+            comment_id={item._id}
             description={item.description}
             profile={item.user_id.profile}
             first_name={item.user_id.first_name}
             last_name={item.user_id.last_name}
+            likes={item.likes.length}
           />
         );
       })}

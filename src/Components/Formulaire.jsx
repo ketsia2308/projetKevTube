@@ -20,12 +20,12 @@ export default function Formulaire() {
         updateUser(user)
         console.log("Connecte")
         console.log({user:auth2.currentUser.get().wt.cu});
+
          //TODO(Faire)
         //Fetch un user sur base de l'email.
         //Si l'utilisateur n'existe pas,
         //On crée un nouvel utilisateur,
         //Si non, on connecte l'utilisateur avec son email.
-
         axios({
           method : "POST",
           url: `${process.env.REACT_APP_URL_SERVER}/users/create`,
